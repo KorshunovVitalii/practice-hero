@@ -11,7 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      Heroes.belongsToMany(models.Powers, {
+        through: 'hero_powers',
+        foreignKey: 'heroId' 
+      });
     }
+   
   }
   Heroes.init({
     nickname: {
@@ -22,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     },
-    realname: {
+    realName: {
       field: 'real_name',
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,17 +37,17 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     },
-    origindescription: {
+    originDescription: {
       field: 'origin_description',
       type: DataTypes.STRING,
       allowNull: false
     },
-    cathphrase: {
+    cathPhrase: {
       field: 'cath_phrase',
       type: DataTypes.STRING,
       allowNull:false
     },
-    pathimages: {
+    pathImages: {
       field: 'path_image',
       type: DataTypes.TEXT,
     }

@@ -1,7 +1,10 @@
 const {Router} = require('express');
+const heroRouter = require('./heroRouter')
 
 const router = Router();
 
-router.get('/hero');
+router.use('/heroes', heroRouter);
 
 module.exports = router; 
+
+
